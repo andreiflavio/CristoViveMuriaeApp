@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+/*
+  Generated class for the Api provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
+@Injectable()
+export class Api {
+
+  constructor(public http: Http) {
+    
+  }
+
+  index(id)
+  {
+    return this.http.get('http://www.thejavaprogrammer.com/wp-json/wp/v2/posts/?_embed&?filter[order]=DESC&filter[posts_per_page]=5&page='+id)
+    //return this.http.get('http://localhost/ionWordpress/wp-json/wp/v2/posts/?_embed&?filter[order]=DESC&filter[posts_per_page]=5&page='+id)
+    //return this.http.get('http://cristovivemuriae.com.br//wp-json/wp/v2/posts')
+
+  }
+
+    search(keyword, id){
+    return this.http.get(
+      'http://www.thejavaprogrammer.com/wp-json/wp/v2/posts?_embed&?filter[order]=DESC&filter[posts_per_page]=5&search=' + keyword + '&page='+id
+    );
+  }
+
+
+
+}

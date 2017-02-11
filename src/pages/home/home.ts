@@ -13,7 +13,7 @@ export class HomePage {
   datas:any;
   type:boolean = false;
   pagination: number = 1;
-  searchKeyword:any;
+  searchKeyword: string = "";
   constructor(public navCtrl: NavController, 	private toast: ToastController, private api: Api) {
     api.index(1).subscribe( data => {
       this.datas = data.json();
